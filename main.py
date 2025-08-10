@@ -1,4 +1,4 @@
-from turtle import update
+import sys
 import pygame
 from asteroidfield import AsteroidField
 from constants import *
@@ -31,6 +31,11 @@ def main():
                 return
 
         updateable.update(dt)
+
+        for asteroid in asteroids:
+            if asteroid.collision(player):
+                print("Game Over!")
+                sys.exit(1)
 
         screen.fill("black")
         for sprite in drawable:
